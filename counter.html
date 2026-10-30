@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            padding: 45px 55px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        #num {
+            font-size: 75px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #00e5ff;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .action-btn {
+            width: 65px;
+            height: 55px;
+            background: #00c9e8;
+            color: #14213d;
+        }
+
+        .action-btn:hover {
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 5px 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 13px;
+            font-size: 16px;
+            background: #ff4757;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #ff6b81;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .subtitle {
+            color: #b8c7d9;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>COUNTER APP</h1>
+
+        <p id="num">0</p>
+
+        <div class="buttons">
+            <button class="action-btn" onclick="increase()">+</button>
+            <button class="action-btn" onclick="decrease()">-</button>
+        </div>
+
+        <button class="reset-btn" onclick="reset()">Reset</button>
+
+        <p class="subtitle">Simple Counter • Made with JavaScript</p>
+
+    </div>
+
+    <script>
+        let count = 0;
+
+        function increase() {
+            count = count + 1;
+            document.getElementById("num").innerHTML = count;
+        }
+
+        function decrease() {
+            if (count > 0) {
+                count = count - 1;
+            }
+            document.getElementById("num").innerHTML = count;
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("num").innerHTML = count;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Currency Converter</title>
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .For-Whole-page {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .Heading {
+            color: #f43f5e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .For-Display-Flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        #currency_input {
+            font-size: 14px;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        #Currency-taker {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 18px;
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 2px solid #334155;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #Currency-taker:focus {
+            border-color: #f43f5e;
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.15);
+        }
+
+        .For-Buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .For-Buttons button {
+            background-color: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 12px 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .For-Buttons button:hover {
+            background-color: #f43f5e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+        }
+
+        .For-Buttons button:active {
+            transform: translateY(0);
+        }
+
+        /* Make the last two buttons span nicely */
+        .For-Buttons button:nth-child(4),
+        .For-Buttons button:nth-child(5) {
+            grid-column: span 1.5;
+        }
+
+        .result-container {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        #changing_paragh {
+            font-size: 26px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="For-Whole-page">
+        <h1 class="Heading">Currency Converter</h1>
+
+        <div class="For-Display-Flex">
+            <label id="currency_input" for="Currency-taker">Value to convert:</label>
+            <input id="Currency-taker" min="0" placeholder="Enter amount..." type="number">
+        </div>
+
+        <div class="For-Buttons">
+            <button onclick="Dollar_converter()">Dollar ($)</button>
+            <button onclick="Euro_converter()">Euro (€)</button>
+            <button onclick="Yen_converter()">Yen (¥)</button>
+            <button onclick="Pound_converter()">Pound (£)</button>
+            <button onclick="Renminbi_converter()">Renminbi (¥)</button>
+        </div>
+
+        <div class="result-container">
+            <div class="result-label">Converted Amount</div>
+            <p id="changing_paragh">0.00 PKR</p>
+        </div>
+    </div>
+
+    <script>
+        function getInputValue() {
+            let raw_input = document.getElementById("Currency-taker").value;
+            return raw_input === "" ? 0 : parseFloat(raw_input);
+        }
+
+        function Dollar_converter() {
+            let input = getInputValue();
+            let result = input * 280.82;
+            document.getElementById("changing_paragh").innerHTML = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " PKR";
+        }
+
+        function Euro_converter() {
+            let input = getInputValue();
+            let result = input * 309.69;
+            document.getElementById("changing_paragh").innerHTML = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " PKR";
+        }
+
+        function Yen_converter() {
+            let input = getInputValue();
+            let result = input * 1.75;
+            document.getElementById("changing_paragh").innerHTML = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " PKR";
+        }
+
+        function Pound_converter() {
+            let input = getInputValue();
+            let result = input * 366.38;
+            document.getElementById("changing_paragh").innerHTML = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " PKR";
+        }
+
+        function Renminbi_converter() {
+            let input = getInputValue();
+            let result = input * 41.36;
+            document.getElementById("changing_paragh").innerHTML = result.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " PKR";
+        }
+    </script>
+</body>
+
+</html>
